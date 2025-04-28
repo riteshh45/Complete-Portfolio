@@ -1,0 +1,85 @@
+{% include "header.html" %}
+<div class="container main">
+    <h1 class="contact">Let's work together!</h1>
+</div>
+<div>
+    <a class="name" href="{{ url_for('home') }}">R. Kumar</a>
+</div>
+<br>
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>I am currently available for freelance opportunities and am open to collaborating
+                with individuals and companies.</p>
+            <p>Whether you have any questions for me, would like to get in touch, or are interested in working together,
+                please feel free to reach out to me using the form below. I look forward to hearing from you!</p>
+        </div>
+    </div>
+</div>
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h2 style="color: white">Send me a message:</h2>
+            {% if msg_sent: %}
+            <p>Message sent. Thanks!</p>
+            <p>I will answer you as soon as possible.</p>
+            {% endif %}
+            <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p style="color: red">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form name="sentMessage" id="contactForm" action="{{ url_for('contact') }}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <input type="text" class="form-control border-0 text-light" placeholder="Name" name="name"
+                            id="name" data-validation-required-message="Please enter your name." required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <input type="email" class="form-control border-0 text-light" placeholder="Email Address"
+                            name="email" id="email" data-validation-required-message="Please enter your email address."
+                            required>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <input type="tel" class="form-control border-0 text-light"
+                            placeholder="Phone Number *(optional)" name="phone" id="phone" required
+                            data-validation-required-message="Please enter your phone number.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <textarea rows="5" class="form-control border-0 text-light" placeholder="Message" name="message"
+                            id="message" data-validation-required-message="Please enter a message." required></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <button type="submit" class="btn btn-dark border-1" id="sendMessageButton">Send</button>
+            </form>
+            <br>
+            <br>
+            <h3>You can also reach me through:</h3>
+            <br>
+            <a class="platform" href="https://github.com/riteshh45">GitHub.</a>
+            <br>
+            <a class="platform" href="https://www.linkedin.com/in/ritesh-kumar-715ab8264/">LinkedIn.</a>
+            <br>
+            <a class="platform" href="mailto:moonknight6568@gmail.com">Gmail</a>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+{% include "footer.html" %}
